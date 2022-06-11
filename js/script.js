@@ -417,6 +417,38 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     
 
+            e.target.classList.add(activeClass);
+
+            calcTotal();
+        });
+        
+    }
+    getStaticInformation('#gender', 'calculating__choose-item_active');
+    getStaticInformation('.calculating__choose_big', 'calculating__choose-item_active');
+
+    function getDynamicInformation(selector) {
+        const input = document.querySelector(selector);
+
+        input.addEventListener('input', () => {
+            switch(input.getAttribute('id')) {
+                case 'height' :
+                    height = +input.value;
+                    break;
+                case 'weight' :
+                    weight = +input.value;
+                    break;
+                case 'age' :
+                    age = +input.value;
+                    break;
+            }
+
+            calcTotal();
+        });   
+    }
+
+    getDynamicInformation('#height');
+    getDynamicInformation('#weight');
+    getDynamicInformation('#age');
 });
 
 
